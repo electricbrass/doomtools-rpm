@@ -11,37 +11,37 @@ StartupWMClass=net-mtrop-doom-tools-gui-DoomToolsGUIMain
 Actions=decohack;dimgconv;dmxconv;doommake;wadmerge;wadscript;wswantbl;wadtex;wtexport;
 
 [Desktop Action decohack]
-Name=DECOHack GUI
+Name=DECOHack
 Exec=/usr/bin/decohack --gui
 
 [Desktop Action dimgconv]
-Name=DImgConv GUI
+Name=DImgConv
 Exec=/usr/bin/dimgconv --gui
 
 [Desktop Action dmxconv]
-Name=DMXConv GUI
+Name=DMXConv
 Exec=/usr/bin/dmxconv --gui
 
 [Desktop Action doommake]
-Name=DoomMake GUI
+Name=DoomMake
 Exec=/usr/bin/doommake --gui
 
 [Desktop Action wadmerge]
-Name=WadMerge GUI
+Name=WadMerge
 Exec=/usr/bin/wadmerge --gui
 
 [Desktop Action wadscript]
-Name=WadScript GUI
+Name=WadScript
 Exec=/usr/bin/wadscript --gui
 
 [Desktop Action wswantbl]
-Name=WSwAnTbl GUI
+Name=WSwAnTbl
 Exec=/usr/bin/wswantbl --gui
 
 [Desktop Action wadtex]
-Name=WadTex GUI
+Name=WadTex
 Exec=/usr/bin/wadtex --gui
 
 [Desktop Action wtexport]
-Name=WTEXport GUI
+Name=WTEXport
 Exec=/usr/bin/wtexport --gui
