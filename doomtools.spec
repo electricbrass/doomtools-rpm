@@ -1,6 +1,6 @@
 name:    doomtools
 Version: 2026.06.28
-Release: 2%{?dist}
+Release: 3%{?dist}
 Summary: Doom modding utility suite
 License: MIT
 URL:     https://mtrop.github.io/DoomTools/
@@ -60,6 +60,9 @@ magick docs/doomtools-logo.ico[0] %{buildroot}/%{_datadir}/icons/hicolor/128x128
 %doc docs/*.md docs/*.txt docs/changelogs/*
 
 %changelog
+* Wed Jul 01 2026 Mia McMahill <electricbrass@proton.me> - 2026.06.28-3
+- Add a workaround for "--docs" not working with standard doc paths
+
 * Wed Jul 01 2026 Mia McMahill <electricbrass@proton.me> - 2026.06.28-2
 - Remove "GUI" from the name of all desktop actions
 
