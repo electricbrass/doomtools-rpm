@@ -29,10 +29,10 @@ DoomTools is a set of command-line utilities for building projects or for other 
 mv docs/LICENSE.txt docs/licenses/LICENSE.txt
 
 # java jar
-install -Dm644 jar/*.jar %{buildroot}%{_javadir}/doomtools/doomtools.jar
+install -Dm644 jar/*.jar %{buildroot}/%{_javadir}/doomtools/doomtools.jar
 
 # shell wrappers
-install -d %{buildroot}%{_bindir}
+install -d %{buildroot}/%{_bindir}
 
 SHELL_TEMPLATE="%{SOURCE2}"
 
@@ -41,21 +41,20 @@ for f in *; do
     mainclass=$(grep -E '^MAINCLASS=' "$f" | cut -d= -f2-)
     [ -n "$mainclass" ] || continue
 
-    sed -e "s|@MAINCLASS@|$mainclass|g" "$SHELL_TEMPLATE" > %{buildroot}%{_bindir}/"$f"
-    chmod 755 %{buildroot}%{_bindir}/"$f"
+    sed -e "s|@MAINCLASS@|$mainclass|g" "$SHELL_TEMPLATE" > %{buildroot}/%{_bindir}/"$f"
+    chmod 755 %{buildroot}/%{_bindir}/"$f"
 done
 
 # desktop + icon
-install -Dm644 %{SOURCE1} %{buildroot}%{_datadir}/applications/doomtools.desktop
-install -d %{buildroot}%{_datadir}/icons/hicolor/128x128/apps
-magick docs/doomtools-logo.ico[0] %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/doomtools.png
+install -Dm644 %{SOURCE1} %{buildroot}/%{_datadir}/applications/doomtools.desktop
+install -d %{buildroot}/%{_datadir}/icons/hicolor/128x128/apps
+magick docs/doomtools-logo.ico[0] %{buildroot}/%{_datadir}/icons/hicolor/128x128/apps/doomtools.png
 
 %files
-%{_bindir}/*
-%dir %{_javadir}/doomtools/
-%{_javadir}/doomtools/doomtools.jar
-%{_datadir}/applications/doomtools.desktop
-%{_datadir}/icons/hicolor/128x128/apps/doomtools.png
+/%{_bindir}/*
+/%{_javadir}/doomtools/doomtools.jar
+/%{_datadir}/applications/doomtools.desktop
+/%{_datadir}/icons/hicolor/128x128/apps/doomtools.png
 %license docs/licenses/LICENSE.txt
 %doc docs/*.md docs/*.txt docs/changelogs/*
 
