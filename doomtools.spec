@@ -52,7 +52,8 @@ magick docs/doomtools-logo.ico[0] %{buildroot}%{_datadir}/icons/hicolor/128x128/
 
 %files
 %{_bindir}/*
-%{_javadir}/doomtools/
+%dir %{_javadir}/doomtools/
+%{_javadir}/doomtools/doomtools.jar
 %{_datadir}/applications/doomtools.desktop
 %{_datadir}/icons/hicolor/128x128/apps/doomtools.png
 %license docs/licenses/LICENSE.txt
