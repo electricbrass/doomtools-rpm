@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=DoomTools
-Exec=/usr/bin/doomtools --gui
+Exec=@BINDIR@/doomtools --gui
 Type=Application
 Categories=Development;
 Keywords=DoomTools;DECOHack;DImgConv;DMXConv;DoomFetch;DoomMake;WadMerge;WadScript;WSwAnTbl;WadTex;WTexList;WTexScan;WTEXport;
@@ -12,36 +12,36 @@ Actions=decohack;dimgconv;dmxconv;doommake;wadmerge;wadscript;wswantbl;wadtex;wt
 
 [Desktop Action decohack]
 Name=DECOHack
-Exec=/usr/bin/decohack --gui
+Exec=@BINDIR@/decohack --gui
 
 [Desktop Action dimgconv]
 Name=DImgConv
-Exec=/usr/bin/dimgconv --gui
+Exec=@BINDIR@/dimgconv --gui
 
 [Desktop Action dmxconv]
 Name=DMXConv
-Exec=/usr/bin/dmxconv --gui
+Exec=@BINDIR@/dmxconv --gui
 
 [Desktop Action doommake]
 Name=DoomMake
-Exec=/usr/bin/doommake --gui
+Exec=@BINDIR@/doommake --gui
 
 [Desktop Action wadmerge]
 Name=WadMerge
-Exec=/usr/bin/wadmerge --gui
+Exec=@BINDIR@/wadmerge --gui
 
 [Desktop Action wadscript]
 Name=WadScript
-Exec=/usr/bin/wadscript --gui
+Exec=@BINDIR@/wadscript --gui
 
 [Desktop Action wswantbl]
 Name=WSwAnTbl
-Exec=/usr/bin/wswantbl --gui
+Exec=@BINDIR@/wswantbl --gui
 
 [Desktop Action wadtex]
 Name=WadTex
-Exec=/usr/bin/wadtex --gui
+Exec=@BINDIR@/wadtex --gui
 
 [Desktop Action wtexport]
 Name=WTEXport
-Exec=/usr/bin/wtexport --gui
+Exec=@BINDIR@/wtexport --gui

@@ -1,6 +1,6 @@
 name:    doomtools
 Version: 2026.06.28
-Release: 4%{?dist}
+Release: 5%{?dist}
 Summary: Doom modding utility suite
 License: MIT
 URL:     https://mtrop.github.io/DoomTools/
@@ -48,6 +48,7 @@ done
 
 # desktop + icon
 install -Dm644 %{SOURCE1} %{buildroot}/%{_datadir}/applications/doomtools.desktop
+sed -i -e "s|@BINDIR@|%{_bindir}|g" %{buildroot}/%{_datadir}/applications/doomtools.desktop
 install -d %{buildroot}/%{_datadir}/icons/hicolor/128x128/apps
 magick docs/doomtools-logo.ico[0] %{buildroot}/%{_datadir}/icons/hicolor/128x128/apps/doomtools.png
 
@@ -60,6 +61,9 @@ magick docs/doomtools-logo.ico[0] %{buildroot}/%{_datadir}/icons/hicolor/128x128
 %doc docs/*.md docs/*.txt docs/changelogs
 
 %changelog
+* Wed Jul 01 2026 Mia McMahill <electricbrass@proton.me> - 2026.06.28-5
+- No changes
+
 * Wed Jul 01 2026 Mia McMahill <electricbrass@proton.me> - 2026.06.28-4
 - Make sure changelogs stay in a subdirectory of docs
 
