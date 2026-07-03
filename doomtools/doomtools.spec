@@ -1,6 +1,6 @@
 name:    doomtools
 Version: 2026.06.28
-Release: 5%{?dist}
+Release: 6%{?dist}
 Summary: Doom modding utility suite
 License: MIT
 URL:     https://mtrop.github.io/DoomTools/
@@ -8,8 +8,10 @@ URL:     https://mtrop.github.io/DoomTools/
 Source0: https://github.com/MTrop/DoomTools/releases/download/2026.06.28-RELEASE/doomtools-bash-2026.06.28.184036227.tar.gz
 Source1: doomtools.desktop
 Source2: template.sh
+Source3: completion
 
 BuildRequires: javapackages-filesystem
+BuildRequires: bash-completion-devel
 BuildRequires: ImageMagick
 Requires: java
 
@@ -23,6 +25,9 @@ DoomTools is a set of command-line utilities for building projects or for other 
 
 %prep
 %setup -q -c -n doomtools
+
+%build
+# no build needed
 
 %install
 
@@ -52,15 +57,22 @@ sed -i -e "s|@BINDIR@|%{_bindir}|g" %{buildroot}/%{_datadir}/applications/doomto
 install -d %{buildroot}/%{_datadir}/icons/hicolor/128x128/apps
 magick docs/doomtools-logo.ico[0] %{buildroot}/%{_datadir}/icons/hicolor/128x128/apps/doomtools.png
 
+# bash completions
+install -Dm644 %{SOURCE3}/bash/doomtools.bash %{buildroot}/%{bash_completions_dir}/doomtools.bash
+
 %files
 %{_bindir}/*
 %{_javadir}/doomtools/doomtools.jar
 %{_datadir}/applications/doomtools.desktop
 %{_datadir}/icons/hicolor/128x128/apps/doomtools.png
+%{bash_completions_dir}/*
 %license docs/licenses/LICENSE.txt
 %doc docs/*.md docs/*.txt docs/changelogs
 
 %changelog
+* Fri Jul 03 2026 Mia McMahill <electricbrass@proton.me> - 2026.06.28-6
+- Add Bash completion script for 'doomtools'
+
 * Wed Jul 01 2026 Mia McMahill <electricbrass@proton.me> - 2026.06.28-5
 - No changes
 
