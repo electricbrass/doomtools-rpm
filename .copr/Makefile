@@ -1,6 +1,8 @@
+SOURCES := $(shell rpm --eval '%_sourcedir')
+
 srpm:
 	tar \
-		-czf $(outdir)/doomtools-rpm-sources.tar.gz \
+		-czf $(SOURCES)/doomtools-rpm-sources.tar.gz \
 		doomtools.desktop \
 		template.sh \
 		completion
