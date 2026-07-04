@@ -8,7 +8,7 @@ URL:     https://mtrop.github.io/DoomTools/
 Source0: https://github.com/MTrop/DoomTools/releases/download/2026.06.28-RELEASE/doomtools-bash-2026.06.28.184036227.tar.gz
 Source1: doomtools.desktop
 Source2: template.sh
-Source3: completion/bash/doomtool.bash
+Source3: completion/bash/doomtools.bash
 
 BuildRequires: javapackages-filesystem
 BuildRequires: bash-completion-devel
