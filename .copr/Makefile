@@ -4,3 +4,4 @@ srpm:
 		doomtools.desktop \
 		template.sh \
 		completion
+	rpmbuild -bs "domtools.spec --define "_srcrpmdir $(outdir)"
