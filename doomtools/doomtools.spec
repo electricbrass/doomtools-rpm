@@ -6,9 +6,7 @@ License: MIT
 URL:     https://mtrop.github.io/DoomTools/
 
 Source0: https://github.com/MTrop/DoomTools/releases/download/2026.06.28-RELEASE/doomtools-bash-2026.06.28.184036227.tar.gz
-Source1: doomtools.desktop
-Source2: template.sh
-Source3: completion/bash/doomtools.bash
+Source1: doomtools-rpm-sources.tar.gz
 
 BuildRequires: javapackages-filesystem
 BuildRequires: bash-completion-devel
@@ -25,6 +23,7 @@ DoomTools is a set of command-line utilities for building projects or for other 
 
 %prep
 %setup -q -c -n doomtools
+tar -xzf %{SOURCE1} -C .
 
 %build
 # no build needed
@@ -40,7 +39,7 @@ install -Dm644 jar/*.jar %{buildroot}/%{_javadir}/doomtools/doomtools.jar
 # shell wrappers
 install -d %{buildroot}/%{_bindir}
 
-SHELL_TEMPLATE="%{SOURCE2}"
+SHELL_TEMPLATE="template.sh"
 
 for f in *; do
     [ -f "$f" ] || continue
@@ -52,13 +51,13 @@ for f in *; do
 done
 
 # desktop + icon
-install -Dm644 %{SOURCE1} %{buildroot}/%{_datadir}/applications/doomtools.desktop
+install -Dm644 doomtools.desktop %{buildroot}/%{_datadir}/applications/doomtools.desktop
 sed -i -e "s|@BINDIR@|%{_bindir}|g" %{buildroot}/%{_datadir}/applications/doomtools.desktop
 install -d %{buildroot}/%{_datadir}/icons/hicolor/128x128/apps
 magick docs/doomtools-logo.ico[0] %{buildroot}/%{_datadir}/icons/hicolor/128x128/apps/doomtools.png
 
 # bash completions
-install -Dm644 %{SOURCE3} %{buildroot}/%{bash_completions_dir}/doomtools.bash
+install -Dm644 completion/bash/doomtools.bash %{buildroot}/%{bash_completions_dir}/doomtools.bash
 
 %files
 %{_bindir}/*
