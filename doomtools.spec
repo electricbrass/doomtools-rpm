@@ -11,7 +11,7 @@ Source1: doomtools-rpm-sources.tar.gz
 BuildRequires: javapackages-filesystem
 BuildRequires: bash-completion-devel
 BuildRequires: ImageMagick
-Requires: java
+Requires: ( java or java-latest-openjdk )
 
 BuildArch: noarch
 
