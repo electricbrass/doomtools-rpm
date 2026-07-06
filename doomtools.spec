@@ -57,7 +57,7 @@ install -d %{buildroot}/%{_datadir}/icons/hicolor/128x128/apps
 magick docs/doomtools-logo.ico[0] %{buildroot}/%{_datadir}/icons/hicolor/128x128/apps/doomtools.png
 
 # bash completions
-install -Dm644 completion/bash/doomtools.bash %{buildroot}/%{bash_completions_dir}/doomtools.bash
+install -m644 completion/bash/* %{buildroot}/%{bash_completions_dir}/
 
 %files
 %{_bindir}/*
