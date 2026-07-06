@@ -57,7 +57,8 @@ install -d %{buildroot}/%{_datadir}/icons/hicolor/128x128/apps
 magick docs/doomtools-logo.ico[0] %{buildroot}/%{_datadir}/icons/hicolor/128x128/apps/doomtools.png
 
 # bash completions
-install -Dm644 completion/bash/* %{buildroot}/%{bash_completions_dir}/
+mkdir -p %{buildroot}/%{bash_completions_dir}
+install -m644 completion/bash/* %{buildroot}/%{bash_completions_dir}/
 
 %files
 %{_bindir}/*
@@ -69,7 +70,7 @@ install -Dm644 completion/bash/* %{buildroot}/%{bash_completions_dir}/
 %doc docs/*.md docs/*.txt docs/changelogs
 
 %changelog
-* Fri Jul 06 2026 Mia McMahill <electricbrass@proton.me> - 2026.06.28-7
+* Mon Jul 06 2026 Mia McMahill <electricbrass@proton.me> - 2026.06.28-7
 - Add Bash completion script for 'doomfetch'
 
 * Fri Jul 03 2026 Mia McMahill <electricbrass@proton.me> - 2026.06.28-6
