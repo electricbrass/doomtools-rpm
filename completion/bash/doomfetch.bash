@@ -42,6 +42,10 @@ function __doomfetch {
     return
   fi
 
+  if $driver_seen && ! $filename_seen; then
+    return
+  fi
+
   if [[ $prev == "--target" ]]; then
     compgen -V COMPREPLY -d -- "$cur"
     return
