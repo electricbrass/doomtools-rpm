@@ -1,6 +1,6 @@
 name:    doomtools
 Version: 2026.06.28
-Release: 7%{?dist}
+Release: 8%{?dist}
 Summary: Doom modding utility suite
 License: MIT
 URL:     https://mtrop.github.io/DoomTools/
@@ -70,6 +70,9 @@ install -m644 completion/bash/* %{buildroot}/%{bash_completions_dir}/
 %doc docs/*.md docs/*.txt docs/changelogs
 
 %changelog
+* Mon Jul 06 2026 Marcus Minhorst - 202606.28-8
+- Add alternative Java dependency
+
 * Mon Jul 06 2026 Mia McMahill <electricbrass@proton.me> - 2026.06.28-7
 - Add Bash completion script for 'doomfetch'
 
