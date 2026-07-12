@@ -2,6 +2,7 @@
 
 export DOOMTOOLS_PATH="/usr/share/java/doomtools"
 export DOOMTOOLS_JAR="/usr/share/java/doomtools/doomtools.jar"
+export DOOMTOOLS_DOCPATH="/usr/share/doc/doomtools"
 for arg in "$@"; do
     case "$arg" in
         --update*)
@@ -11,7 +12,7 @@ for arg in "$@"; do
             ;;
         --docs)
             command="$(basename "$(realpath "$0")")"
-            [ "$command" = "doomtools" ] && xdg-open "/usr/share/doc/doomtools" && exit 0
+            [ "$command" = "doomtools" ] && xdg-open "$DOOMTOOLS_DOCPATH" && exit 0
             ;;
     esac
 done
