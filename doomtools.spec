@@ -1,11 +1,11 @@
 name:    doomtools
-Version: 2026.07.11
+Version: 2026.07.12
 Release: 1%{?dist}
 Summary: Doom modding utility suite
 License: MIT
 URL:     https://mtrop.github.io/DoomTools/
 
-Source0: https://github.com/MTrop/DoomTools/releases/download/2026.07.11-RELEASE/doomtools-bash-2026.07.11.162725789.tar.gz
+Source0: https://github.com/MTrop/DoomTools/releases/download/2026.07.12-RELEASE/doomtools-bash-2026.07.12.133154070.tar.gz
 Source1: doomtools-rpm-sources.tar.gz
 
 BuildRequires: javapackages-filesystem
@@ -70,6 +70,9 @@ install -m644 completion/bash/* %{buildroot}/%{bash_completions_dir}/
 %doc docs/*.md docs/*.txt docs/changelogs
 
 %changelog
+* Sun Jul 12 2026 Mia McMahill <electricbrass@proton.me> - 2026.07.12-1
+- Update to upstream release 2026.07.12
+
 * Sat Jul 11 2026 Mia McMahill <electricbrass@proton.me> - 2026.07.11-1
 - Update to upstream release 2026.07.11
 
