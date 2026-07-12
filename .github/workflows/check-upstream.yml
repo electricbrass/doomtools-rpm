@@ -1,0 +1,72 @@
+name: Upstream Release Check
+
+on:
+  schedule:
+    - cron: "0 1 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Get upstream release
+        id: release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG=${ gh release view --repo MTrop/DoomTools --json tagName --jq '.tagName'; }
+          VERSION="${TAG%-RELEASE}"
+          URL=${ gh release view --repo MTrop/DoomTools --json assets --jq '.assets[] | select(.name | startswith("doomtools-bash-")) | .url'; }
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "url=${URL}" >> "$GITHUB_OUTPUT"
+
+      - name: Check if release is new
+        id: check
+        shell: bash
+        run: |
+          CURRENT=${ grep '^Version:' doomtools.spec | awk '{print $2}'; }
+          if [[ $CURRENT == "${{ steps.release.outputs.version }}" ]]; then
+            echo "needed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "needed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Update spec
+        if: steps.check.outputs.needed == 'true'
+        shell: bash
+        env:
+          VERSION: ${{ steps.release.outputs.version }}
+          URL: ${{ steps.release.outputs.url }}
+        run: |
+          sed -i "s|^Version:.*|Version: ${VERSION}|" doomtools.spec
+          sed -i "s|^Release:.*|Release: 1%{?dist}|" doomtools.spec
+          sed -i "s|^Source0:.*|Source0: ${URL}|" doomtools.spec
+          DATE=${ LC_ALL=C TZ=America/Chicago date '+%a %b %d %Y'; }
+          awk -i inplace -v version="$VERSION" -v date="$DATE" '
+            /^%changelog$/ {
+              print
+              print "* " date " Mia McMahill <electricbrass@proton.me> - " version "-1"
+              print "- Update to upstream release " version
+              print ""
+              next
+            }
+            { print }
+          ' doomtools.spec
+
+      - name: Make PR
+        if: steps.check.outputs.needed == 'true'
+        uses: peter-evans/create-pull-request@v8
+        with:
+          branch: update-doomtools-${{ steps.release.outputs.version }}
+          commit-message: Update DoomTools to ${{ steps.release.outputs.version }}
+          title: Update DoomTools to ${{ steps.release.outputs.version }}
+          body: |
+            Automated update to upstream DoomTools release ${{ steps.release.outputs.version }}.
