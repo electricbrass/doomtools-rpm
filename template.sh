@@ -10,10 +10,6 @@ for arg in "$@"; do
             echo 'Update using "dnf upgrade" instead'
             exit 1
             ;;
-        --docs)
-            command="$(basename "$(realpath "$0")")"
-            [ "$command" = "doomtools" ] && xdg-open "$DOOMTOOLS_DOCPATH" && exit 0
-            ;;
     esac
 done
 exec /usr/bin/java -cp "$DOOMTOOLS_JAR" -Xms64M -Xmx4G @MAINCLASS@ "$@"

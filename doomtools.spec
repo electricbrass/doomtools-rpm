@@ -1,6 +1,6 @@
 name:    doomtools
 Version: 2026.07.12
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: Doom modding utility suite
 License: MIT
 URL:     https://mtrop.github.io/DoomTools/
@@ -70,6 +70,9 @@ install -m644 completion/bash/* %{buildroot}/%{bash_completions_dir}/
 %doc docs/*.md docs/*.txt docs/changelogs
 
 %changelog
+* Sun Jul 12 2026 Mia McMahill <electricbrass@proton.me> - 2026.07.12-2
+- Remove workaround for --docs
+
 * Sun Jul 12 2026 Mia McMahill <electricbrass@proton.me> - 2026.07.12-1
 - Update to upstream release 2026.07.12
 
