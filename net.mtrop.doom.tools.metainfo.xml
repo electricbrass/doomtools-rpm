@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>net.mtrop.doom.tools</id>
+
+  <name>DoomTools</name>
+  <summary>Doom modding utility suite</summary>
+
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+
+  <description>
+    <p>
+      DoomTools is a set of command-line utilities for building projects or for other things related to Doom Engine games.
+    </p>
+  </description>
+
+  <launchable type="desktop-id">doomtools.desktop</launchable>
+</component>

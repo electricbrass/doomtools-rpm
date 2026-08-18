@@ -1,6 +1,6 @@
 name:    doomtools
 Version: 2026.08.02
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: Doom modding utility suite
 License: MIT
 URL:     https://mtrop.github.io/DoomTools/
@@ -56,6 +56,9 @@ sed -i -e "s|@BINDIR@|%{_bindir}|g" %{buildroot}/%{_datadir}/applications/doomto
 install -d %{buildroot}/%{_datadir}/icons/hicolor/128x128/apps
 magick docs/doomtools-logo.ico[0] %{buildroot}/%{_datadir}/icons/hicolor/128x128/apps/doomtools.png
 
+# metainfo
+install -Dm644 net.mtrop.doom.tools.metainfo.xml %{buildroot}/%{_metainfodir}/net.mtrop.doom.tools.metainfo.xml
+
 # bash completions
 mkdir -p %{buildroot}/%{bash_completions_dir}
 install -m644 completion/bash/* %{buildroot}/%{bash_completions_dir}/
@@ -65,11 +68,15 @@ install -m644 completion/bash/* %{buildroot}/%{bash_completions_dir}/
 %{_javadir}/doomtools/doomtools.jar
 %{_datadir}/applications/doomtools.desktop
 %{_datadir}/icons/hicolor/128x128/apps/doomtools.png
+%{_metainfodir}/net.mtrop.doom.tools.metainfo.xml
 %{bash_completions_dir}/*
 %license docs/licenses/LICENSE.txt
 %doc docs/*.md docs/*.txt docs/changelogs
 
 %changelog
+* Tue Aug 18 2026 Mia McMahill <electricbrass@proton.me> - 2026.08.02-2
+- Add appstream metainfo
+
 * Sun Aug 02 2026 Mia McMahill <electricbrass@proton.me> - 2026.08.02-1
 - Update to upstream release 2026.08.02
 
