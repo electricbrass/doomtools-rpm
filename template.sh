@@ -12,4 +12,4 @@ for arg in "$@"; do
             ;;
     esac
 done
-exec /usr/bin/java -cp "$DOOMTOOLS_JAR" -Xms64M -Xmx4G @MAINCLASS@ "$@"
+exec java -cp "$DOOMTOOLS_JAR" -Xms64M -Xmx4G @MAINCLASS@ "$@"
